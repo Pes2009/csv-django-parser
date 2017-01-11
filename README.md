@@ -14,7 +14,7 @@ Application objectives:
    * for GET 
       * return html with a form which would let user upload a csv file
    * for POST 
-      * parse uploaded csv file with proper handling of exceptions. Sample file is part of this project ().
+      * parse uploaded csv file with proper handling of exceptions. Sample file is part of this project (input.csv).
       * save data into database
   
 6. Create list view under `/parser/list` display output of parsed csv in table.
