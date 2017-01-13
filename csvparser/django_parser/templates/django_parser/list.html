@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+{% if queryset %}
+    <table class="table table-striped">
+        <tr>
+            <td>id</td>
+            <td>first_name</td>
+            <td>last_name</td>
+            <td>email</td>
+            <td>domain</td>
+            <td>url</td>
+        </tr>
+
+        {% for instance in  queryset %}
+
+            <tr>
+                <td>{{ instance.id }}</td>
+                <td>{{ instance.first_name }}</td>
+                <td>{{ instance.last_name }}</td>
+                <td>{{ instance.email }}</td>
+                <td>{{ instance.domain }}</td>
+                <td>{{ instance.url }}</td>
+            </tr>
+
+
+
+
+
+
+
+        {% endfor %}
+    </table>
+
+{% endif %}
+</body>
+</html>
