@@ -1,26 +1,17 @@
-from django.shortcuts import render
-
-from .forms import UploadForm
-from .models import CsvList
-
 import csv
 
+from django.shortcuts import render
 
-# Create your views here.
+from .models import CsvList
+from .forms import UploadForm
 
 
 def upload(request, *args, **kwargs):
     form = UploadForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        instance = form.save(commit=True)
-
     if request.method == "POST":
-        cs = request.FILES.get("upload")
-        path = str(cs)
-        directory = "C:\\Users\\martin\\Desktop\\test\\csv-django-parser\\csvparser\\media_cdn\\"
-
-        with open(str(directory) + str(path)) as csvfile:
-            reader = csv.DictReader(csvfile)
+        if form.is_valid():
+            instance = form.save(commit=True)
+            reader = csv.DictReader(instance.upload.file)
             for row in reader:
                 parsing, created = CsvList.objects.get_or_create(
                     id=row['id'],
